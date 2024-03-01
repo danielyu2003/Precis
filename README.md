@@ -1,2 +1,3 @@
-# Precis
-A minimal command line tool for prompting ChatGPT
+# Précis
+
+A minimal command line tool for prompting ChatGPT.
