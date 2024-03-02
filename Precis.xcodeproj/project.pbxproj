@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C36A35DB2B927A9F00DD2E13 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36A35DA2B927A9F00DD2E13 /* main.swift */; };
+		C3DF75A92B93CCF900E40F4E /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = C3DF75A82B93CCF900E40F4E /* ArgumentParser */; };
+		C3DF75AB2B93CCF900E40F4E /* generate-manual in Frameworks */ = {isa = PBXBuildFile; productRef = C3DF75AA2B93CCF900E40F4E /* generate-manual */; };
+		C3DF75AD2B93CE0100E40F4E /* Precis.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DF75AC2B93CE0100E40F4E /* Precis.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +26,7 @@
 
 /* Begin PBXFileReference section */
 		C36A35D72B927A9F00DD2E13 /* Precis */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Precis; sourceTree = BUILT_PRODUCTS_DIR; };
-		C36A35DA2B927A9F00DD2E13 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		C3DF75AC2B93CE0100E40F4E /* Precis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Precis.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +34,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3DF75A92B93CCF900E40F4E /* ArgumentParser in Frameworks */,
+				C3DF75AB2B93CCF900E40F4E /* generate-manual in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,7 +61,7 @@
 		C36A35D92B927A9F00DD2E13 /* Precis */ = {
 			isa = PBXGroup;
 			children = (
-				C36A35DA2B927A9F00DD2E13 /* main.swift */,
+				C3DF75AC2B93CE0100E40F4E /* Precis.swift */,
 			);
 			path = Precis;
 			sourceTree = "<group>";
@@ -78,6 +82,10 @@
 			dependencies = (
 			);
 			name = Precis;
+			packageProductDependencies = (
+				C3DF75A82B93CCF900E40F4E /* ArgumentParser */,
+				C3DF75AA2B93CCF900E40F4E /* generate-manual */,
+			);
 			productName = Precis;
 			productReference = C36A35D72B927A9F00DD2E13 /* Precis */;
 			productType = "com.apple.product-type.tool";
@@ -106,6 +114,9 @@
 				Base,
 			);
 			mainGroup = C36A35CE2B927A9F00DD2E13;
+			packageReferences = (
+				C3DF75A72B93CCF800E40F4E /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+			);
 			productRefGroup = C36A35D82B927A9F00DD2E13 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -120,7 +131,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C36A35DB2B927A9F00DD2E13 /* main.swift in Sources */,
+				C3DF75AD2B93CE0100E40F4E /* Precis.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,7 +284,7 @@
 				C36A35DD2B927A9F00DD2E13 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		C36A35DE2B927A9F00DD2E13 /* Build configuration list for PBXNativeTarget "Precis" */ = {
 			isa = XCConfigurationList;
@@ -282,9 +293,33 @@
 				C36A35E02B927A9F00DD2E13 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C3DF75A72B93CCF800E40F4E /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C3DF75A82B93CCF900E40F4E /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3DF75A72B93CCF800E40F4E /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+		C3DF75AA2B93CCF900E40F4E /* generate-manual */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3DF75A72B93CCF800E40F4E /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = "generate-manual";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C36A35CF2B927A9F00DD2E13 /* Project object */;
 }
