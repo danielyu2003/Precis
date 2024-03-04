@@ -25,6 +25,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C32B64C02B951C480068CD64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C36A35D72B927A9F00DD2E13 /* Precis */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Precis; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3DF75AC2B93CE0100E40F4E /* Precis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Precis.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -45,6 +46,7 @@
 		C36A35CE2B927A9F00DD2E13 = {
 			isa = PBXGroup;
 			children = (
+				C32B64C02B951C480068CD64 /* Info.plist */,
 				C36A35D92B927A9F00DD2E13 /* Precis */,
 				C36A35D82B927A9F00DD2E13 /* Products */,
 			);
@@ -260,6 +262,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -269,6 +272,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
