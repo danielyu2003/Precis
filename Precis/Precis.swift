@@ -11,51 +11,61 @@ import ArgumentParser
 @main
 struct Precis: AsyncParsableCommand {
 	struct ResponseBody: Codable {
+		// TODO: Replace with OpenAI API
+		struct DefinitionBody: Codable {
+			let definition: String
+		}
 		let word: String
 		let results: [DefinitionBody]
 	}
 	
-	struct DefinitionBody: Codable {
-		let definition: String
-	}
-	
 	enum Length: EnumerableFlag {
-		case Short
-		case Medium
-		case Long
+		case short
+		case medium
+		case long
 	}
 	
 	enum PrecisError: Error {
 		case missingAPIKey
-		case invalidStatusCode
+		case nilResponse
+		case errStatusCode(Int)
 	}
 	
-	@Flag(exclusivity: .exclusive, help: "The relative size of the response.")
-	var outputLength: Length = .Short
-	
-	@Argument(help: "The prompt of the query.")
+	@Argument(help: "The sent prompt.")
 	var query: String
 	
 	@Option(help: "The OpenAI API key.")
 	var api_key: String?
 	
+	@Flag(exclusivity: .exclusive, help: "The response length.")
+	var outputLength: Length = .short
+	
 	mutating func run() async throws {
 		api_key = api_key ?? ProcessInfo.processInfo.environment["OPENAI_API_KEY"]
-		guard let _ = api_key else { throw PrecisError.missingAPIKey }
-		try await foo()
+		guard let api_key = api_key else { throw PrecisError.missingAPIKey }
+		print("generating \(outputLength) summary of \(query)...")
+		try await submitQuery(api_key)
 	}
 	
-	func foo() async throws {
+	func submitQuery(_ api_key: String) async throws {
+		// TODO: replace with OpenAI API
 		let base = URL(string: "https://wordsapiv1.p.rapidapi.com/words/")!
 		let url = URL(string: query, relativeTo: base)!
 		var request = URLRequest(url: url)
 		request.httpMethod = "GET"
-		request.addValue(api_key!, forHTTPHeaderField: "X-Mashape-Key")
+		request.addValue(api_key, forHTTPHeaderField: "X-Mashape-Key")
+		
 		let (data, response) = try await URLSession.shared.data(for: request)
-		guard let response = response as? HTTPURLResponse, (200..<300) ~= response.statusCode else {
-			throw PrecisError.invalidStatusCode
+		guard let response = response as? HTTPURLResponse else {
+			throw PrecisError.nilResponse
 		}
-		let test = try JSONDecoder().decode(ResponseBody.self, from: data)
-		print(test.results[0].definition)
+		if response.statusCode < 200 || response.statusCode >= 300 {
+			throw PrecisError.errStatusCode(response.statusCode)
+		}
+		let responseBody = try JSONDecoder().decode(ResponseBody.self, from: data)
+		
+		// TODO: replace with OpenAI ResponseBody
+		let body = responseBody.results.first ?? ResponseBody.DefinitionBody(definition: "No definition found")
+		print(body.definition)
 	}
 }
