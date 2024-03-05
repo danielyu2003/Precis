@@ -22,6 +22,6 @@ Todo
 
 ## License
 
-> [GNU GPLv3](LICENSE.md)
+> [GNU GPLv3](LICENSE)
 
 
